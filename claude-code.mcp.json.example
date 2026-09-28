@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "Kiliba": {
+      "type": "http",
+      "url": "https://mcp.kiliba.ai/mcp",
+      "oauth": {
+        "clientId": "3nv4hfrsqtk6qot09087a70e4p",
+        "callbackPort": 8080,
+        "scopes": "https://mcp.kiliba.ai/mcp/reporting.read https://mcp.kiliba.ai/mcp/customers.read https://mcp.kiliba.ai/mcp/customers.write https://mcp.kiliba.ai/mcp/messages.send https://mcp.kiliba.ai/mcp/workflows.trigger aws.cognito.signin.user.admin"
+      }
+    }
+  }
+}

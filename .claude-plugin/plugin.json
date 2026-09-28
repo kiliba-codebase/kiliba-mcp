@@ -1,0 +1,10 @@
+{
+  "name": "kiliba-mcp",
+  "displayName": "Kiliba — Ecommerce Marketing",
+  "version": "1.0.0",
+  "description": "Connect Claude to Kiliba to analyze ecommerce and marketing performance, diagnose shop connectivity, understand MARK capabilities, and run selected actions with explicit confirmation.",
+  "author": {
+    "name": "Kiliba",
+    "url": "https://www.kiliba.com"
+  }
+}
