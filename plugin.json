@@ -40,6 +40,7 @@
         "logo": "./assets/kiliba-icon-512.png",
         "logoDark": "./assets/kiliba-icon-512.png"
       },
+      "onboardingSkill": "./skills/kiliba-marketing/SKILL.md",
       "review": {
         "test_cases": {
           "positive": [
