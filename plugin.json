@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "kiliba-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Connect Kiliba ecommerce marketing data and authorized actions to ChatGPT, Codex, and compatible AI clients.",
   "author": {
     "name": "Kiliba",
@@ -18,7 +18,7 @@
         "shortDescription": "Pilot your Kiliba marketing",
         "longDescription": "Connect your Kiliba account to analyze aggregate ecommerce and marketing performance, inspect shop and module connectivity, discover Kiliba and MARK capabilities, and run selected customer, messaging, and workflow actions with explicit confirmation. Access remains limited to the shops and permissions of the authenticated Kiliba user.",
         "developerName": "Kiliba",
-        "category": "Productivity",
+        "category": "Business & Operations",
         "capabilities": [
           "Analyze ecommerce and marketing performance",
           "Check shop, synchronization, and module status",
@@ -98,7 +98,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Initial Kiliba MCP release for authenticated reporting, shop diagnostics, product capability discovery, and explicitly confirmed actions.",
+        "release_notes": "Initial Kiliba MCP release for authenticated reporting, shop diagnostics, product capability discovery, and explicitly confirmed actions. Refines the directory category for ecommerce marketing operations.",
         "translations": {
           "fr-FR": {
             "subtitle": "Pilotez votre marketing Kiliba",
