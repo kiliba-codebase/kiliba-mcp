@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "kiliba-mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Connect Kiliba ecommerce marketing data and authorized actions to ChatGPT, Codex, and compatible AI clients.",
   "author": {
     "name": "Kiliba",
@@ -99,7 +99,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Initial Kiliba MCP release for authenticated reporting, shop diagnostics, product capability discovery, and explicitly confirmed actions. Refines the directory category for ecommerce marketing operations.",
+        "release_notes": "Adds configurable attribution analysis to Kiliba reporting tools. Analyses use the account attribution window by default and can temporarily compare 4-hour, 24-hour, 5-day, or 30-day windows without changing the Kiliba account configuration. Aggregate rates can use either the Kiliba dashboard calculation or a send-volume-weighted calculation.",
         "translations": {
           "fr-FR": {
             "subtitle": "Pilotez votre marketing Kiliba",

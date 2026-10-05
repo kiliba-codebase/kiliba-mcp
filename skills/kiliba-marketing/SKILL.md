@@ -30,6 +30,10 @@ Do not claim that the connector exposes MARK's complete in-product runtime.
 
 Always preserve the period, data freshness, attribution rules, and limitations returned by the connector. Do not describe attributed revenue as causal lift, profit, margin, or ROI.
 
+By default, omit `attribution_window` so reporting tools use the attribution window configured on the Kiliba account. When the user explicitly asks to compare or recalculate attribution over another supported window, pass `4h`, `24h`, `5days`, or `30days`. Make clear that this is a temporary analysis override and does not change the account configuration.
+
+For aggregate engagement rates, use `rate_calculation: kiliba_average` by default to preserve the calculation displayed in Kiliba. Use `weighted_by_sends` only when the user explicitly asks for rates weighted by message volume, and label the calculation mode in the answer.
+
 ## Diagnose the shop connection
 
 Use `get_shop_configuration` for the CMS, installed module version, synchronization state, connection status, and bounded module diagnostic. Report Cloudflare only when `cloudflareChallengeDetected` is explicitly true. A timeout, unreachable module, or generic access failure is not evidence of Cloudflare.
