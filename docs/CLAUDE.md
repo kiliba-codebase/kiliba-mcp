@@ -49,6 +49,12 @@ claude mcp logout Kiliba
 
 Claude should use `discover_kiliba_capabilities` for these questions and must preserve the distinction between capabilities available inside Kiliba/MARK and those exposed through MCP.
 
+## HTML Smartletters with local images
+
+For an image attached in Claude or referenced by a local HTML file, ask Claude to call `upload_campaign_image` for the selected Kiliba shop. Open the returned `uploadUrl` and choose the original PNG, JPEG, GIF or WebP file on your device (maximum 2 MiB). Tell Claude when the page confirms the import. Claude then calls `get_campaign_image_upload` with the saved `uploadRef` and places the returned Kiliba CDN URL in the HTML. One link uploads one image and is valid until its returned `expiresAt` (at most 10 minutes). Claude should never copy image bytes into a text tool argument. An image already hosted at a stable public HTTPS URL can be used directly.
+
+Image upload only hosts an asset. Creating, scheduling or sending a campaign still follows its separate review and confirmation steps.
+
 ## Plugin bundle
 
 The Anthropic plugin bundle in this repository adds product-specific guidance

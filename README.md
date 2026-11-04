@@ -4,7 +4,7 @@ Kiliba makes ecommerce marketing automation simple. Connect your shop, activate 
 
 MARK is Kiliba's integrated AI marketing agent. It helps pilot campaign preparation and monitoring, analyzes performance, recommends the next useful action and keeps sensitive decisions under your control. Kiliba can detect the colors, fonts and links of your website to prepare campaigns that look like your brand. MARK can then audit an email and improve its content or supported design from a simple conversational request.
 
-Kiliba MCP connects Claude and compatible AI clients to selected Kiliba reporting, shop diagnostics and explicitly authorized actions. ChatGPT and Mistral integrations are coming soon. The connector does not expose MARK's complete in-product runtime.
+Kiliba MCP connects ChatGPT, Claude and compatible AI clients to selected Kiliba reporting, shop diagnostics and explicitly authorized actions. Mistral integration is coming soon. The connector does not expose MARK's complete in-product runtime.
 
 - Production endpoint: `https://mcp.kiliba.ai/mcp`
 - Transport: MCP Streamable HTTP
@@ -15,8 +15,10 @@ Kiliba MCP connects Claude and compatible AI clients to selected Kiliba reportin
 
 - Discover what Kiliba and its integrated MARK marketing agent can do, with a clear distinction between product capabilities and the subset available through MCP.
 - Read the current shop, CMS, module version, synchronization and bounded connection diagnostic.
-- Aggregate marketing and ecommerce reporting.
-- Customer listing, limited to 100 records per page.
+- Aggregate marketing and ecommerce reporting, including comparison of authorized shops.
+- Customer search and profiles, contact-base health, and saved audience segments.
+- Read Smartletter drafts and sent content; host individual images for an HTML draft, then create or edit the draft after explicit confirmation. Schedule or cancel a campaign as a separate confirmed action.
+- Read active and inactive scenario and workflow configuration, including exclusions.
 - Transactional template discovery and explicitly confirmed email, SMS, RCS or WhatsApp sends.
 - API-triggerable workflow discovery and explicitly confirmed execution.
 - Explicitly confirmed customer blacklist and whitelist operations.
@@ -30,6 +32,8 @@ See [KILIBA_AND_MARK.md](docs/KILIBA_AND_MARK.md) for the product capability gui
 - Compare my marketing and ecommerce performance with the previous period.
 - Which products or product families contribute most to attributed revenue?
 - Which Kiliba capabilities are available through this MCP?
+- Which Smartletter drafts and audience segments can I work with?
+- Prepare an HTML Smartletter draft for my review; do not schedule or send it.
 - Is my Kiliba module connected and up to date?
 - Is Cloudflare actually blocking Kiliba, or is the module unreachable for another reason?
 
@@ -38,7 +42,7 @@ The capability guide is factual product documentation, not a promise that every 
 ## Connect
 
 - [Claude.ai, Claude Desktop and Claude Code](docs/CLAUDE.md)
-- ChatGPT directory availability is coming soon.
+- [ChatGPT plugin](https://chatgpt.com/plugins/plugin_asdk_app_6abd8942e1f88191b730634070f113b7) ([setup guide](docs/CHATGPT.md))
 - Mistral directory availability is coming soon.
 
 ## Claude plugin

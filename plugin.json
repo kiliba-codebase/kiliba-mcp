@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "kiliba-mcp",
-  "version": "1.0.3",
-  "description": "Connect Kiliba ecommerce marketing data and authorized actions to ChatGPT, Codex, and compatible AI clients.",
+  "version": "1.0.4",
+  "description": "Connect Kiliba ecommerce marketing data, audiences, Smartletter drafts and authorized actions to ChatGPT, Codex, and compatible AI clients.",
   "author": {
     "name": "Kiliba",
     "email": "clement@kiliba.com",
@@ -16,11 +16,14 @@
       "interface": {
         "displayName": "Kiliba",
         "shortDescription": "Pilot your Kiliba marketing",
-        "longDescription": "Connect your Kiliba account to analyze aggregate ecommerce and marketing performance, inspect shop and module connectivity, discover Kiliba and MARK capabilities, and run selected customer, messaging, and workflow actions with explicit confirmation. Access remains limited to the shops and permissions of the authenticated Kiliba user.",
+        "longDescription": "Connect your Kiliba account to analyze ecommerce and marketing performance across authorized shops, inspect customers, audiences, Smartletters, automation settings and shop connectivity. Prepare HTML Smartletter drafts, audience segments and selected customer, messaging or workflow actions; changes require explicit confirmation. Scheduling and cancellation are separate confirmed actions. Access remains limited to the shops and permissions of the authenticated Kiliba user.",
         "developerName": "Kiliba",
         "category": "Business & Operations",
         "capabilities": [
-          "Analyze ecommerce and marketing performance",
+          "Analyze ecommerce and marketing performance across authorized shops",
+          "Review customers, audiences, Smartletters, and automations",
+          "Create and edit HTML Smartletter drafts with confirmation",
+          "Schedule or cancel Smartletters with confirmation",
           "Check shop, synchronization, and module status",
           "Run explicitly confirmed Kiliba actions"
         ],
@@ -30,7 +33,7 @@
         "termsOfServiceURL": "https://www.kiliba.com/cgu",
         "defaultPrompt": [
           "Compare my Kiliba performance over the last 30 days.",
-          "Check whether my Kiliba shop module is connected and up to date.",
+          "List my Kiliba Smartletter drafts and saved audience segments.",
           "What can Kiliba and MARK do for my ecommerce marketing?"
         ],
         "brandColor": "#5E6BFF",
@@ -49,7 +52,7 @@
               "description": "List the connected Kiliba shops",
               "prompt": "Which Kiliba shops can I access?",
               "tools_triggered": "list_accounts",
-              "expected_behavior": "Return only active shops available to the authenticated user, using opaque account references and the correct read or write access level."
+              "expected_behavior": "Return only shops available to the authenticated user, with opaque account references, read or write access, and MCP eligibility including inactive or plan-ineligible status."
             },
             {
               "description": "Review recent account performance",
@@ -70,10 +73,10 @@
               "expected_behavior": "Explain factual product capabilities while clearly distinguishing the features available through this MCP from those available only inside Kiliba or MARK."
             },
             {
-              "description": "Compare campaign performance",
-              "prompt": "Which of my Kiliba campaigns performed best this month?",
-              "tools_triggered": "list_accounts, get_campaign_performance",
-              "expected_behavior": "Return aggregate campaign observations for the selected shop and period without claiming causal lift, profit, or access to individual orders."
+              "description": "Review Smartletters and saved audiences",
+              "prompt": "List my Kiliba Smartletter drafts and saved audience segments.",
+              "tools_triggered": "list_accounts, list_campaigns, list_segments",
+              "expected_behavior": "Ask for a shop if needed, then list only its authorized Smartletter drafts and saved segments. An empty result is not a reason to create or send a campaign."
             }
           ],
           "negative": [
@@ -99,11 +102,11 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Adds configurable attribution analysis to Kiliba reporting tools. Analyses use the account attribution window by default and can temporarily compare 4-hour, 24-hour, 5-day, or 30-day windows without changing the Kiliba account configuration. Aggregate rates can use either the Kiliba dashboard calculation or a send-volume-weighted calculation.",
+        "release_notes": "Adds cross-shop reporting, customer and contact-base insights, saved audience segments, and Smartletter draft discovery, creation and editing. Scheduling and cancellation are separate actions requiring explicit confirmation. The connector also exposes detailed automation configuration while preserving each user's shop permissions.",
         "translations": {
           "fr-FR": {
             "subtitle": "Pilotez votre marketing Kiliba",
-            "description": "Connectez votre compte Kiliba pour analyser vos performances ecommerce et marketing, vérifier la connexion de votre boutique et de son module, découvrir les capacités de Kiliba et de MARK, et lancer certaines actions avec confirmation explicite. L’accès reste limité aux boutiques et aux droits de l’utilisateur authentifié."
+            "description": "Connectez votre compte Kiliba pour analyser les performances de vos boutiques, consulter clients, segments, Smartletters et automatisations, puis préparer des brouillons HTML ou des actions ciblées avec confirmation explicite. La programmation et l’annulation d’un envoi restent des actions distinctes. L’accès respecte les boutiques et les droits de l’utilisateur authentifié."
           }
         }
       }
