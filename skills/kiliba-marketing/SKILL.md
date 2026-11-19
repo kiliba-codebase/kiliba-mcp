@@ -9,7 +9,7 @@ Use the Kiliba connector for facts about the authenticated user's Kiliba account
 
 ## Select the account
 
-Call `list_accounts` before any account-specific tool when the user has not identified a shop. If several shops match, ask the user to choose. Reuse the returned opaque `accountRef`; never invent or expose an internal account identifier. Report an inactive or plan-ineligible shop as such instead of treating it as an empty result. Write access also depends on the authenticated user's permissions.
+Call `list_accounts` before any account-specific tool when the user has not identified a shop. If several shops match, ask the user to choose. Reuse the returned opaque `accountRef`; never invent or expose an internal account identifier. Report an inactive or plan-ineligible shop as such instead of treating it as an empty result. Write access also depends on the authenticated user's permissions. Use the returned `emailLanguages` when preparing HTML Smartletter content for that shop.
 
 ## Answer product questions
 
@@ -46,13 +46,15 @@ Use `list_customers` only when the user explicitly asks for customer-level data.
 ## Inspect campaigns, audiences and automations
 
 - Use `list_campaigns` for Smartletter drafts, scheduled campaigns and recorded sends. A past schedule is not proof that a send completed.
-- Use `get_campaign_content` for localized subject, audience, exclusions, links and an HTML preview. When editing a custom HTML draft, request `include_source=true` and preserve its source HTML, wordings and variables; a sample preview is not proof of recipient-specific delivered content.
+- Use `get_campaign_content` for localized subject, audience, exclusions, links and an HTML preview. When editing a custom HTML draft, request `include_source=true` and preserve its source HTML, wordings and variables. A missing translation can block the preview while `sourceHtml` remains available; inspect `previewError` and repair the draft. A sample preview is not proof of recipient-specific delivered content.
 - Use `list_sender_profiles` to find a configured sender before preparing a draft. An empty list with a limitation means no sender is configured for that shop.
 - When the user asks to create a Smartletter from attached HTML and images, inspect the HTML or archive in the conversation. Do not pass an archive to Kiliba. For each locally referenced image, call `upload_campaign_image` with the selected shop's `account_ref`, present its `uploadUrl` to the user, and ask them to choose that image in the browser. Never copy image bytes or base64 into tool arguments. After the user confirms the upload, call `get_campaign_image_upload` with `uploadRef`. Only when its status is `COMPLETED`, replace the matching local path (`src`, `srcset`, CSS `url()` and background attributes) with the returned `imageUrl`. If status is `PENDING`, ask the user to finish the upload; if the link expired or failed, create a new one. Check that no local image reference remains in the final HTML. Keep existing public HTTPS image URLs as they are. The upload accepts PNG, JPEG, GIF or WebP up to 2 MiB each. Never invent a URL or claim an image was hosted without a successful result. Upload only images needed for the requested draft.
 - Use `list_segments` and `get_segment` for saved audiences. Use `preview_segment_audience` to count proposed conditions before `prepare_segment_creation`.
 - Use `get_automation_configuration` to inspect active and inactive scenarios, workflows and their exclusions. Use `list_triggerable_workflows` only to find enabled workflows with an API trigger.
 
 The connector does not currently offer campaign-specific non-opener segments, per-recipient optimized send times or A/B subject tests. Do not imply that these options are available through the MCP.
+
+For an HTML Smartletter, supply the subject and referenced wording or variable values in the shop's configured sending languages; localize the optional preheader when it is used. Inspect the `validation` result from `prepare_campaign_draft` or `prepare_campaign_draft_update`: it lists missing values by language. A draft with missing translations can be saved, but it cannot be scheduled until those values are supplied. Updates patch only the supplied languages and retain other translations. When removing an obsolete custom variable, remove its `{{placeholder}}` from the HTML and pass its name in `remove_variables`; sending `variables: {}` does not remove existing declarations. If scheduling reports missing translations, update the draft and rerun preparation before asking the user to confirm a schedule.
 
 ## Require confirmation for actions
 
