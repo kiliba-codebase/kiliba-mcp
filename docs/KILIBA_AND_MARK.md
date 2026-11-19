@@ -29,7 +29,7 @@ Kiliba Automation provides more than 30 ready-to-use ecommerce scenarios. They c
 
 MARK can explain scenarios, inspect their state and statistics, diagnose their execution path and prepare supported parameter changes with confirmation.
 
-**MCP availability:** aggregate scenario and workflow reporting is available. Enabled API-triggerable workflows can be discovered and triggered after explicit confirmation. Full scenario configuration and diagnosis remain inside Kiliba/MARK.
+**MCP availability:** aggregate scenario and workflow reporting and read-only configuration, including inactive entries and their exclusions, are available. Enabled API-triggerable workflows can be discovered and triggered after explicit confirmation. Changes to scenario configuration remain inside Kiliba/MARK.
 
 ## Create and refine Smartletters
 
@@ -37,19 +37,19 @@ MARK can help prepare a Smartletter's objective, products, audience, languages, 
 
 Kiliba can start from the shop itself: website colors, fonts and links can be detected and proposed before validation. Within Kiliba's editor, MARK can audit the email and conversationally refine supported subjects, preheaders, wording, links, images, colors, spacing, mobile layout, product cards, blocks and calls to action. Changes use guarded native editor operations rather than arbitrary MJML or CSS.
 
-**MCP availability:** Smartletter aggregate performance can be analyzed. Creation and conversational editing are not exposed through the current public MCP.
+**MCP availability:** Smartletter performance and content can be analyzed. The public MCP can create and edit unscheduled custom HTML Smartletter drafts, host their images, and separately schedule or cancel a send after explicit confirmation. It supports localized subjects and preheaders, exposes the shop's sending languages, and checks required translations before scheduling. The native editor's block and design operations remain inside Kiliba/MARK.
 
 ## Build audiences and segments
 
 MARK can understand explicit audience criteria in natural language, resolve account products, categories, lists and segments, preview raw and eligible volumes, explain exclusions and prepare supported segment creation after confirmation.
 
-**MCP availability:** bounded customer listing and explicitly confirmed blacklist or whitelist operations are available. Dynamic-segment compilation and creation remain inside Kiliba/MARK.
+**MCP availability:** bounded customer search, saved-segment inspection, audience preview and confirmed segment creation are available, as are explicitly confirmed blacklist or whitelist operations. The full MARK audience planning experience remains inside Kiliba/MARK.
 
 ## Coordinate channels and transactional messaging
 
 Kiliba supports email, SMS, RCS, WhatsApp and transactional templates. MARK can prepare channel-specific marketing drafts while keeping content preparation, preview, draft creation, scheduling and sending as distinct steps.
 
-**MCP availability:** transactional templates can be discovered. A transactional email, SMS, RCS or WhatsApp send can be prepared, validated and executed after explicit confirmation. Marketing campaign creation is not exposed.
+**MCP availability:** transactional templates can be discovered. A transactional email, SMS, RCS or WhatsApp send can be prepared, validated and executed after explicit confirmation. Custom HTML Smartletter draft creation is available separately; other marketing campaign editors remain inside Kiliba/MARK.
 
 ## Use MARK as an integrated marketing agent
 

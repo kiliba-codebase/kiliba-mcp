@@ -48,6 +48,8 @@ The `kiliba://reporting/metrics` resource documents metric definitions, units, a
 
 Aggregate reporting never returns individual orders, raw events, margin, profit or invented ROI. Customer and segment tools below return scoped personal or audience data only when the user's grant and OAuth scope permit them.
 
+`list_accounts` also returns `emailLanguages`, the shop's configured sending languages. Use these languages when preparing or editing an HTML Smartletter.
+
 ## Customer access
 
 - `list_customers`: up to 100 customers per opaque cursor page; filter by exact email or part of a name with `search_text`.
@@ -59,19 +61,20 @@ Aggregate reporting never returns individual orders, raw events, margin, profit 
 ## Smartletters and audience segments
 
 - `list_campaigns`: browse drafts, schedules and sent Smartletters. Sent status uses the same recorded delivery evidence as the Kiliba app; a past schedule alone is not proof of delivery.
-- `get_campaign_content`: read localized subject, rendered HTML preview and links. Set `include_source=true` when editing a custom HTML draft; use `sourceHtml`, `wordings` and `variables` to preserve its placeholders. The preview is an estimate, not an exact archive of each delivered email.
+- `get_campaign_content`: read localized subject, rendered HTML preview and links. Set `include_source=true` when editing a custom HTML draft; use `sourceHtml`, `wordings` and `variables` to preserve its placeholders. If missing translations block the preview, the editable source is still returned with `previewError`. The preview is an estimate, not an exact archive of each delivered email.
 - `list_sender_profiles`: inspect configured sender identities.
 - `upload_campaign_image`: create a one-time browser upload link for one PNG, JPEG, GIF or WebP image (maximum 2 MiB) in the selected shop. Give the link to the user; the image file is selected and transmitted directly from their browser, never through a text tool argument.
 - `get_campaign_image_upload`: after the user imports the file, retrieve its Kiliba CDN URL using the `uploadRef` from the first tool. Replace the matching local image path in the HTML before preparing a draft. Existing public HTTPS image URLs need no upload.
 - `list_segments` and `get_segment`: inspect saved audience definitions and counts.
 - `preview_segment_audience`: count an unsaved audience using existing Kiliba conditions.
 - `prepare_segment_creation` and `execute_segment_creation`: save a reviewed segment. Supported conditions include email contactability, RFM, last order, email engagement over a period, customer group and custom attributes.
-- `prepare_campaign_draft` and `execute_campaign_draft`: create an unscheduled HTML Smartletter after review.
-- `prepare_campaign_draft_update` and `execute_campaign_draft_update`: modify an unscheduled HTML draft with a revision check.
+- `prepare_campaign_draft` and `execute_campaign_draft`: create an unscheduled HTML Smartletter after review. Preparation reports `emailLanguages`, `htmlIssues`, `missingWordingsByLanguage` and `localizationComplete` before confirmation.
+- `prepare_campaign_draft_update` and `execute_campaign_draft_update`: modify an unscheduled HTML draft with a revision check. Supplied subject, preheader, wording and variable values update only the specified languages; omitted translations are retained. To delete an obsolete variable declaration, remove its placeholder from the HTML and pass its name in `remove_variables`. An empty `variables` map does not delete existing declarations. Preparation reports the same localization diagnostics as draft creation.
 - `prepare_campaign_schedule` and `execute_campaign_schedule`: review and schedule a Smartletter at a Europe/Paris date and time.
 - `prepare_campaign_cancellation` and `execute_campaign_cancellation`: review and cancel an active schedule. Already delivered messages cannot be recalled.
 
 Draft creation and editing never schedule or send. Use the returned opaque campaign, segment and sender references only with the same authorized shop. Campaign-specific non-opener segments, per-recipient optimized send times and A/B subject tests are not exposed by these tools.
+An incomplete translation can be saved as a draft, but scheduling requires the subject and every used wording or variable to be ready in each configured sending language. If scheduling is rejected, its error identifies the missing language and field so the draft can be corrected before trying again.
 Image upload stores an asset in the selected shop's Kiliba image library. The upload link is valid until the returned `expiresAt` (at most 10 minutes) and accepts one file; the resulting CDN URL remains retrievable for one hour. Uploading does not create a campaign. The user chooses the file in the browser; the assistant must not serialize image bytes or ask the user to paste base64.
 Audience exclusions require at least one included segment; an automatic audience cannot silently ignore an exclusion.
 
