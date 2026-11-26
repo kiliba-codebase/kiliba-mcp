@@ -16,9 +16,11 @@ Kiliba MCP connects ChatGPT, Claude and compatible AI clients to selected Kiliba
 - Discover what Kiliba and its integrated MARK marketing agent can do, with a clear distinction between product capabilities and the subset available through MCP.
 - Read the current shop, CMS, module version, synchronization and bounded connection diagnostic.
 - Aggregate marketing and ecommerce reporting, including comparison of authorized shops.
-- Customer search and profiles, contact-base health, and saved audience segments.
+- Customer search and profiles, contact-base health, native customer groups and saved audience segments.
+- Catalogue product discovery and chosen-product HTML slots with prices resolved from synchronized catalogue data during send preparation.
 - Read Smartletter drafts and sent content; host individual images for an HTML draft, then create or edit the draft after explicit confirmation. Schedule or cancel a campaign as a separate confirmed action.
 - Read active and inactive scenario and workflow configuration, including exclusions.
+- Confirmed SMS/RCS/push drafts, separate sends and schedules, cancellation before dispatch, and supported automation settings/exclusions. See [the tool contract](docs/TOOLS.md) for channel, module, credit and lifecycle limits.
 - Transactional template discovery and explicitly confirmed email, SMS, RCS or WhatsApp sends.
 - API-triggerable workflow discovery and explicitly confirmed execution.
 - Explicitly confirmed customer blacklist and whitelist operations.

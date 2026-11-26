@@ -29,7 +29,7 @@ Kiliba Automation provides more than 30 ready-to-use ecommerce scenarios. They c
 
 MARK can explain scenarios, inspect their state and statistics, diagnose their execution path and prepare supported parameter changes with confirmation.
 
-**MCP availability:** aggregate scenario and workflow reporting and read-only configuration, including inactive entries and their exclusions, are available. Enabled API-triggerable workflows can be discovered and triggered after explicit confirmation. Changes to scenario configuration remain inside Kiliba/MARK.
+**MCP availability:** aggregate scenario and workflow reporting and read-only configuration, including inactive entries and their exclusions, are available. Enabled API-triggerable workflows can be discovered and triggered after explicit confirmation. Supported scenario settings and product/category/audience exclusions can be changed after explicit confirmation. Activation, installation, promotional settings and scenario email-template editing retain their dedicated Kiliba paths.
 
 ## Create and refine Smartletters
 
@@ -49,7 +49,7 @@ MARK can understand explicit audience criteria in natural language, resolve acco
 
 Kiliba supports email, SMS, RCS, WhatsApp and transactional templates. MARK can prepare channel-specific marketing drafts while keeping content preparation, preview, draft creation, scheduling and sending as distinct steps.
 
-**MCP availability:** transactional templates can be discovered. A transactional email, SMS, RCS or WhatsApp send can be prepared, validated and executed after explicit confirmation. Custom HTML Smartletter draft creation is available separately; other marketing campaign editors remain inside Kiliba/MARK.
+**MCP availability:** transactional templates can be discovered. A transactional email, SMS, RCS or WhatsApp send can be prepared, validated and executed after explicit confirmation. Custom HTML Smartletters and SMS/RCS/push campaigns have distinct confirmed draft and delivery operations. Mobile campaigns require a credit ceiling and supported countries; push images require compatible modules and browsers. See [TOOLS.md](TOOLS.md) for supported fields, states and limitations.
 
 ## Use MARK as an integrated marketing agent
 
@@ -91,3 +91,7 @@ Call `discover_kiliba_capabilities` with one of these topics:
 - `safety_governance`
 
 Every result explicitly says whether the capability is available through MCP now, partially exposed, or available only inside Kiliba/MARK.
+
+### Native customer groups and chosen products
+
+The MCP can discover native CMS customer groups independently of saved segments, target or exclude those groups in HTML Smartletters, and use them in segment conditions. Product discovery returns shop-bound references and dynamic HTML slots for chosen catalogue products. Prices and promotions follow the synchronized Kiliba catalogue during send preparation; personalized recommendations and fixed product selection remain separate concepts. See [the exact tool contract](TOOLS.md#chosen-products-with-dynamic-html-prices).
